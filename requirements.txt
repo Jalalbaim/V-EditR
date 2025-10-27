@@ -1,0 +1,7 @@
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121  # or cpu
+pip install diffusers transformers accelerate safetensors
+pip install opencv-python pillow matplotlib tqdm
+pip install ultralytics groundingdino segment-anything
+pip install hydra-core omegaconf pydantic
+pip install gradio wandb
+pip install scikit-image scikit-learn
