@@ -1,0 +1,8 @@
+# configs/planner.yaml
+planner:
+  mode: "heuristic_v2"
+  assume_preserve_background: true
+  max_collateral: 0.12
+  default_count: 1
+  allow_multi_targets: true
+  relation_window_tokens: 6 # window for pairing subj/obj around a relation

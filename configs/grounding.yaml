@@ -1,0 +1,16 @@
+# configs/grounding.yaml
+grounding:
+  device: "cuda" # "cuda" or "cpu"
+  dino:
+    ckpt: "C:/Users/JALAL/OneDrive/Documents/V-EditR/weights/groundingdino_swint_ogc.pth" # put your file here
+    box_threshold: 0.25
+    text_threshold: 0.25
+    nms_iou: 0.5
+    max_detections_per_target: 3
+    config: ".venv/Lib/site-packages/groundingdino/config/GroundingDINO_SwinT_OGC.py"
+  sam:
+    ckpt: "C:/Users/JALAL/OneDrive/Documents/V-EditR/weights/sam_vit_h_4b8939.pth" # put your file here (or vit_l/b)
+    variant: "vit_h" # "vit_h" | "vit_l" | "vit_b"
+  viz:
+    show_labels: true
+    color_alpha: 70
