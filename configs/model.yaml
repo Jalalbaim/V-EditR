@@ -1,0 +1,18 @@
+# configs/model.yaml
+models:
+  device: "cuda" # or "cpu" if you don't have a GPU
+
+  # Attribute / style modification
+  instructpix2pix:
+    name: "timbrooks/instruct-pix2pix"
+    use_fp16: true
+
+  # Object insertion/removal (Add-It / ControlNet)
+  addit:
+    base_model: "runwayml/stable-diffusion-inpainting"
+    controlnet: "lllyasviel/sd-controlnet-depth"
+    use_fp16: true
+
+  editor:
+    # auto: chooses between both depending on operation type (recolor/add/remove)
+    mode: "auto" # ["auto", "instructpix2pix", "addit"]
