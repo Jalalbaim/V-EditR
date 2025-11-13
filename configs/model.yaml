@@ -11,8 +11,10 @@ models:
   addit:
     base_model: "runwayml/stable-diffusion-inpainting"
     controlnet: "lllyasviel/sd-controlnet-depth"
+    # base_model: "stabilityai/stable-diffusion-2-inpainting"
+    # controlnet: "lllyasviel/sd-controlnet-depth"
     use_fp16: true
 
   editor:
     # auto: chooses between both depending on operation type (recolor/add/remove)
-    mode: "auto" # ["auto", "instructpix2pix", "addit"]
+    mode: "auto" # ["auto", "recolor : instructpix2pix", "add/ remove: addit"]

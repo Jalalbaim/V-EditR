@@ -34,9 +34,36 @@ class EditManager:
         grounding_info = locate_plan_aware(...) output
         """
         op = plan.ops[0].type if plan.ops else "unknown"
+        
+        # Determine the appropriate mask based on operation type
         mask = None
-        if grounding_info["targets"] and grounding_info["targets"][0].get("masks") is not None:
-            mask = grounding_info["targets"][0]["masks"][0]
+        
+        if op == "add":
+            # For ADD operations: find the reference object (not the object to add)
+            # The first target is typically the object to add, find other targets for reference
+            reference_mask = None
+            if len(grounding_info["targets"]) > 1:
+                # Use the second target (reference object like "truck")
+                ref_target = grounding_info["targets"][1]
+                if ref_target.get("masks") is not None and len(ref_target["masks"]) > 0:
+                    reference_mask = ref_target["masks"][0]
+            
+            if reference_mask is not None:
+                # Create an inverted mask: allow adding everywhere EXCEPT on the reference object
+                mask = ~reference_mask
+            else:
+                # No reference object found - allow adding anywhere (full white mask will be created in run_addit)
+                mask = None
+                
+        elif op == "remove":
+            # For REMOVE operations: use the mask of the object to remove (first target)
+            if grounding_info["targets"] and grounding_info["targets"][0].get("masks") is not None:
+                mask = grounding_info["targets"][0]["masks"][0]
+        
+        elif op in ["recolor", "replace"]:
+            # For RECOLOR/REPLACE: use the target object mask
+            if grounding_info["targets"] and grounding_info["targets"][0].get("masks") is not None:
+                mask = grounding_info["targets"][0]["masks"][0]
 
         # Decide model
         if self.mode == "instructpix2pix" or (self.mode == "auto" and op in ["recolor", "replace", "move"]):

@@ -118,9 +118,17 @@ def locate_plan_aware(
                 xyxy[:, 2] = np.clip(xyxy[:, 2], 0, W - 1)
                 xyxy[:, 3] = np.clip(xyxy[:, 3], 0, H - 1)
                 boxes = xyxy.astype(np.float32)
+                
+                # Filtrer les boîtes invalides (largeur ou hauteur <= 0)
+                valid = (boxes[:, 2] > boxes[:, 0]) & (boxes[:, 3] > boxes[:, 1])
+                boxes = boxes[valid]
+                scores = scores[valid]
 
             # NMS + per-target cap
-            keep = nms_xyxy(boxes, scores, gcfg.dino.nms_iou)
+            if len(boxes) > 0:
+                keep = nms_xyxy(boxes, scores, gcfg.dino.nms_iou)
+            else:
+                keep = np.array([], dtype=np.int32)
             boxes = boxes[keep]
             scores = scores[keep]
             if len(boxes) > gcfg.dino.max_detections_per_target:

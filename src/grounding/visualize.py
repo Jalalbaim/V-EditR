@@ -9,13 +9,19 @@ def draw_boxes(img: Image.Image, boxes: List[Tuple[int,int,int,int]], labels=Non
     overlay = Image.new("RGBA", out.size, (0,0,0,0))
     d = ImageDraw.Draw(overlay)
     for i, b in enumerate(boxes):
-        x1,y1,x2,y2 = map(int, b)
-        d.rectangle([x1,y1,x2,y2], outline=color+(255,), width=3)
-        d.rectangle([x1,y1,x2,y2], fill=color+(alpha,))
+        x1, y1, x2, y2 = map(int, b)
+        # S'assurer que les coordonnées sont dans le bon ordre
+        x_min, x_max = min(x1, x2), max(x1, x2)
+        y_min, y_max = min(y1, y2), max(y1, y2)
+        # Vérifier que la boîte a une taille valide
+        if x_max <= x_min or y_max <= y_min:
+            continue  # Ignorer les boîtes invalides
+        d.rectangle([x_min, y_min, x_max, y_max], outline=color+(255,), width=3)
+        d.rectangle([x_min, y_min, x_max, y_max], fill=color+(alpha,))
         if labels is not None:
             try:
                 font = ImageFont.load_default()
-                d.text((x1+4, y1+4), str(labels[i]), fill=(255,255,255,230), font=font)
+                d.text((x_min+4, y_min+4), str(labels[i]), fill=(255,255,255,230), font=font)
             except Exception:
                 pass
     return Image.alpha_composite(out, overlay).convert("RGB")
