@@ -75,4 +75,4 @@ class EditManager:
             prompt = plan.instruction
             return run_addit(pipe, img, mask, prompt)
         else:
-            return img  # no-op fallback
+            return img  
