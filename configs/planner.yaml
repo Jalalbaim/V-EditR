@@ -1,6 +1,6 @@
 # configs/planner.yaml
 planner:
-  mode: "heuristic_v2"
+  mode: "llm"
   assume_preserve_background: true
   max_collateral: 0.12
   default_count: 1

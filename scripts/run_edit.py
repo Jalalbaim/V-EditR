@@ -29,7 +29,7 @@ def _load_yaml(path: str) -> dict:
 
 def _get_planner(parse_mode: str, planner_cfg: dict):
     """Select the parsing strategy for the planner."""
-    if parse_mode == "heuristic_v2":
+    if parse_mode == "llm":
         from src.planners.parse_v2 import parse as parse_plan_v2
         return lambda instr: parse_plan_v2(
             instr,
@@ -120,7 +120,7 @@ def main():
     }
     save_json(summary, run_dir / "run_summary.json")
 
-    print(f"\n✅ Phase 4 editing done. See: {run_dir}\n")
+    print(f"\n Phase 4 editing done. See: {run_dir}\n")
 
 
 # ---------------------- Entry point ----------------------
