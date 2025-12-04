@@ -37,7 +37,7 @@ def _get_planner(parse_mode: str, planner_cfg: dict):
             max_collateral=planner_cfg.get("max_collateral", 0.12),
         )
     else:
-        from src.planners.parse import parse as parse_plan_v1
+        from src.planners.parse_ontology import parse as parse_plan_v1
         return lambda instr: parse_plan_v1(instr)
 
 
