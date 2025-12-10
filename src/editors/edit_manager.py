@@ -74,5 +74,8 @@ class EditManager:
             pipe = self._get_addit_pipe()
             prompt = plan.instruction
             return run_addit(pipe, img, mask, prompt)
+        elif self.mode == "FlowEdit":
+            print("[INFO] EditManager mode is 'FlowEdit' - returning original image (not implemented)")
+            return img
         else:
             return img  
