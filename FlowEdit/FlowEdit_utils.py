@@ -220,8 +220,7 @@ def FlowEditSD3(pipe,
 
             prev_sample = xt_tar + (t_im1 - t_i) * (Vt_tar)
 
-            prev_sample = prev_sample.to(noise_pred_tar.dtype)
-
+            prev_sample = prev_sample.to(dtype=x_src.dtype)
             xt_tar = prev_sample
         
     return zt_edit if n_min == 0 else xt_tar
