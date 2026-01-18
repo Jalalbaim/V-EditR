@@ -1,75 +1,13 @@
-- input_img: example_images/gas_station.png
-  source_prompt: A gas station with a white and red sign that
-    reads "CAFE" There are several cars parked in front of the gas station, including
-    a white car and a van.
-
-  target_prompts:
-    - A gas station with a white and red sign that
-      reads "l'X" There are several cars parked in front of the gas station, including
-      a white car and a van.
-
-  target_codes:
-    - l'X
-
-- input_img: example_images/lighthouse.png
-  source_prompt: The image features a tall white lighthouse standing prominently
-    on a hill, with a beautiful blue sky in the background. The lighthouse is illuminated
-    by a bright light, making it a prominent landmark in the scene.
-
-  target_prompts:
-    - The image features Eiffel tower standing prominently
-      on a hill, with a beautiful blue sky in the background. The Eiffel tower is illuminated
-      by a bright light, making it a prominent landmark in the scene.
-
-  target_codes:
-    - eiffel_tower
-
 - input_img: example_images/bear.png
-
   source_prompt: A large brown bear walking through a stream of water.
     The stream appears to be shallow, as the bear is able to walk through it without any difficulty.
 
   target_prompts:
-    - A large panda bear walking through a stream of water. The stream appears to be shallow, as the panda bear is able to walk through it without any difficulty.
+    - A large brown bear walking on the grass
+    - A large brown bear standing on its hind legs
+    - A large brown bear sitting on the snow and looking face forward
 
   target_codes:
-    - panda_bear
-
-- input_img: example_images/castle.png
-  source_prompt:
-    A majestic castle with a tall, pointed roof, situated on a hillside. The sky above the castle is filled with clouds, creating a dramatic atmosphere.
-    There are several windows on the castle, with some located on the lower levels and others on the upper levels.
-
-  target_prompts:
-    - A majestic castle made out of lego bricks with a tall, pointed roof, situated on a hillside. The sky above the lego castle is filled with clouds, creating a dramatic atmosphere.
-      There are several windows on the lego castle, with some located on the lower levels and others on the upper levels.
-
-  target_codes:
-    - lego_castle
-
-- input_img: example_images/cat_ginger.png
-  source_prompt: An orange and white cat sitting.
-
-  target_prompts:
-    - A tiger sitting.
-
-  target_codes:
-    - tiger
-
-- input_img: example_images/cupcake.png
-  source_prompt: A small chocolate cupcake with light brown whipped cream on top.
-
-  target_prompts:
-    - A small vanilla cupcake with whipped cream on top.
-
-  target_codes:
-    - vanilla
-
-- input_img: example_images/stop.png
-  source_prompt: A stop sign prominently placed in a field of yellow flowers.
-
-  target_prompts:
-    - A sign that says IPP prominently placed in a field of yellow flowers.
-
-  target_codes:
-    - IPP
+    - grass
+    - standing
+    - snow
